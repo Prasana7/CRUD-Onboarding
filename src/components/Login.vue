@@ -1,34 +1,35 @@
 <template>
-  <v-container class="login">
-    <v-row class="text-center ">
-      <v-col class="mb-4">
-       <v-text-field
-       label="Username*">
-       </v-text-field>
-      </v-col>
+     <v-container>
+  
+        <v-img
+       height="100"
+            src="../assets/logo.png"
+         contain
+          />
+    
+      <v-form ref="form" >
 
-      <v-col
-        class="mb-5"
-        cols="12"
-      >
+       <v-text-field
+       label="Email">
+       </v-text-field>
+
+   
       <v-text-field
-       label="Password*">
+       label="Password">
        </v-text-field>      
-      </v-col>
 
       <v-btn
           block
           large
           depressed
-          class="red_btn white--text login"
+          color="success"
           @click="userLogin"
-          :disabled="buttonLoadingSubmit"
-          ><span v-if="!buttonLoadingSubmit">Login</span>
-          <span v-else class="button_submit_loading"></span
-        ></v-btn>
-<span >Register</span>
-    </v-row>
-  </v-container>
+          >Login
+         </v-btn>
+<div class="d-flex justify-center">Register</div>
+      </v-form>
+
+    </v-container>
 </template>
 
 <script>
@@ -39,15 +40,10 @@
 </script>
 
 <style scoped>
-.login {
-  /* margin-top: 100px;
-  margin-left: 56px;
-  margin-bottom: 40px; */
-  min-height: 30%;
+
+/* .form{
   display: flex;
-  align-items: center;
   justify-content: center;
-  font-size: 30px;
-  margin-left: 40px;
-}
+  align-items: center;
+} */
 </style>
