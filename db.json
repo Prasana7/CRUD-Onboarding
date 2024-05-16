@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": "3b8e",
+      "companyName": "bc",
+      "logoUrl": "nbchd",
+      "email": "cdd@m.com",
+      "password": "jhcvwdjnmc"
+    }
+  ],
+  "employees": [
+    {
+      "id": "c579",
+      "name": "Prasanna",
+      "dob": "2024-05-01",
+      "address": "jbjg",
+      "city": "Chennai",
+      "state": "Tamil Nadu",
+      "experience": "bb"
+    }
+  ]
+}
