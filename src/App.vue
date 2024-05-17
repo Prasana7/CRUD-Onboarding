@@ -1,13 +1,34 @@
 <template>
   <v-app>
-    <v-app-bar app color="success" dark>
+    <v-app-bar app color="#006D5B" dark v-if="user">
       <v-toolbar-title>
-        <img :src="logoUrl" alt="Logo" height="32">
-        <span v-if="companyName" class="ml-3">{{ companyName }}</span>
+        <img :src="logoUrl" alt="Logo" height="40" />
+        <span v-if="companyName" class="ml-3 text-h4 text-uppercase">{{
+          companyName
+        }}</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn v-if="isAuthenticated" @click="logout" color="white">Logout</v-btn>
+      <v-icon class="mr-5" @click="toHome">mdi-home-circle</v-icon>
+      <v-icon @click="logoutDialog = true">mdi-logout</v-icon>
     </v-app-bar>
+    <v-dialog v-model="logoutDialog" persistent max-width="400">
+      <v-card style="border-radius: 8px" class="pa-4" color="bg">
+        <v-card-title>
+          <div class="text-h5 text-center">Do you wish to Logout ?</div>
+        </v-card-title>
+        <v-card-actions class="d-flex justify-center">
+          <v-btn class="white--text px-8" color="success" @click="logoutBtn"
+            >Yes</v-btn
+          >
+          <v-btn
+            class="white--text px-8"
+            color="error"
+            @click="logoutDialog = false"
+            >No</v-btn
+          >
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
     <v-main>
       <router-view />
     </v-main>
@@ -15,21 +36,35 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapGetters, mapActions } from "vuex";
 
 export default {
-  name: 'App',
+  name: "App",
+  data() {
+    return {
+      logoutDialog: false,
+    };
+  },
   computed: {
-    ...mapGetters(['isAuthenticated']),
+    ...mapGetters(["user"]),
     logoUrl() {
-      return this.$store.state.user?.logoUrl || '';
+      return this.$store.state.user?.logoUrl || "";
     },
     companyName() {
-      return this.$store.state.user?.companyName || '';
+      return this.$store.state.user?.companyName || "";
     },
   },
   methods: {
-    ...mapActions(['logout']),
+    ...mapActions(["logout"]),
+    toHome() {
+      if (this.$router.history.current.fullPath !== "/home")
+        this.$router.push("/home");
+    },
+    logoutBtn() {
+      this.logout();
+      this.$router.push("/login");
+      this.logoutDialog = false;
+    },
   },
 };
 </script>

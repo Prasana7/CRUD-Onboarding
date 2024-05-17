@@ -1,22 +1,84 @@
 {
   "users": [
     {
-      "id": "3b8e",
-      "companyName": "bc",
-      "logoUrl": "nbchd",
-      "email": "cdd@m.com",
-      "password": "jhcvwdjnmc"
+      "id": "2300",
+      "companyName": "wywny",
+      "logoUrl": "https://images.pexels.com/photos/844297/pexels-photo-844297.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "email": "adminuser@inconn.com",
+      "password": "password"
+    },
+    {
+      "id": "a88f",
+      "companyName": "XOME",
+      "logoUrl": "https://play-lh.googleusercontent.com/oGungDhFuHgenpkPMAlYomWe4hC5JNKZlYPYKueuuBir9QyrmYXZYnIffjb_DDiUuQQ",
+      "email": "adminuser1@inconn.com",
+      "password": "password"
+    },
+    {
+      "id": "5dd1",
+      "companyName": "TEZ",
+      "logoUrl": "https://banner2.cleanpng.com/20180728/tju/kisspng-google-logo-business-microsoft-windows-operating-system-5b5cb99e99ca38.3321008115328034866299.jpg",
+      "email": "tez@inconn.com",
+      "password": "password"
     }
   ],
   "employees": [
     {
-      "id": "c579",
-      "name": "Prasanna",
-      "dob": "2024-05-01",
-      "address": "jbjg",
+      "id": "a35a",
+      "state": "Tamilnadu",
+      "name": "Senthil",
+      "dob": "2000-04-01",
+      "address": "Taramani",
       "city": "Chennai",
-      "state": "Tamil Nadu",
-      "experience": "bb"
+      "experiences": [
+        {
+          "company_name": "ZOHO",
+          "from_date": "2021-01-01",
+          "to_date": "2025-12-31",
+          "position": "DEV"
+        },
+        {
+          "company_name": "GOOGLE",
+          "from_date": "2026-01-01",
+          "to_date": "2031-12-31",
+          "position": "DEV"
+        }
+      ],
+      "experience": "10.99"
+    },
+    {
+      "id": "e821",
+      "state": "Tamilnadu",
+      "name": "RAMESH R",
+      "dob": "1967-05-19",
+      "address": "Poonamalle",
+      "city": "Chennai",
+      "experiences": [
+        {
+          "company_name": "Crescent Computes",
+          "from_date": "1983-01-01",
+          "to_date": "1992-01-01",
+          "position": "BA"
+        }
+      ],
+      "experience": "9.00"
+    },
+    {
+      "id": "ae05",
+      "state": "Tamilnadu",
+      "name": "AJAY",
+      "dob": "1993-06-19",
+      "address": "E2E2",
+      "city": "Madurai",
+      "experiences": [
+        {
+          "company_name": "MSC",
+          "from_date": "2013-09-09",
+          "to_date": "2019-09-09",
+          "position": "BA"
+        }
+      ],
+      "experience": "6.00"
     }
   ]
 }

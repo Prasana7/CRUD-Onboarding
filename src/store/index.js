@@ -5,11 +5,16 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    user: null,
+    user: JSON.parse(localStorage.getItem('user')) || null,
   },
   mutations: {
     setUser(state, user) {
       state.user = user;
+      localStorage.setItem('user', JSON.stringify(user));
+    },
+    clearUser(state) {
+      state.user = null;
+      localStorage.removeItem('user');
     },
   },
   actions: {
@@ -17,7 +22,7 @@ export default new Vuex.Store({
       commit('setUser', user);
     },
     logout({ commit }) {
-      commit('setUser', null);
+      commit('clearUser');
     },
   },
   getters: {
