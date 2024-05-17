@@ -1,8 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-
 Vue.use(Vuex);
-
 export default new Vuex.Store({
   state: {
     user: JSON.parse(localStorage.getItem('user')) || null,
@@ -27,6 +25,7 @@ export default new Vuex.Store({
   },
   getters: {
     user: state => state.user,
+    isAuthenticated: state => !!state.user, // Check if user is not null or undefined
   },
   modules: {},
 });
