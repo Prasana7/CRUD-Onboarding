@@ -1,18 +1,22 @@
 <template>
   <v-container>
     <v-row>
-      <v-col  class="d-flex justify-start">
+      <v-col class="d-flex justify-start">
         <h2>Employee List</h2>
       </v-col>
-      <v-col  class="d-flex justify-end">
-        <v-btn @click="openAddEmployeeDialog" color="success" 
+      <v-col class="d-flex justify-end">
+        <v-btn @click="openAddEmployeeDialog" color="success"
           >Add Employee</v-btn
         >
-        <v-btn @click="openSearchDialog = true" color="warning" class="mx-5">Search</v-btn>
-        <v-btn @click="filter={}"  color="error">Clear<v-icon  class="ml-1">mdi-filter-remove</v-icon></v-btn>
+        <v-btn @click="openSearchDialog = true" color="warning" class="mx-5"
+          >Search</v-btn
+        >
+        <v-btn @click="filter = {}" color="error"
+          >Clear<v-icon class="ml-1">mdi-filter-remove</v-icon></v-btn
+        >
       </v-col>
     </v-row>
-    <br>
+    <br />
     <v-sheet outlined>
       <v-data-table
         :headers="headers"
@@ -20,14 +24,23 @@
         class="elevation-1"
         hide-default-footer
         :search="tableSearch"
-      > 
+      >
         <template v-slot:[`item.action`]="{ item }">
           <v-icon small class="mr-2" @click="editItem(item)" color="warning">
             mdi-pencil
           </v-icon>
-          <v-icon small class="mr-2" @click="editItem(item),disableForm=true" color="blue"> mdi-eye </v-icon>
+          <v-icon
+            small
+            class="mr-2"
+            @click="editItem(item), (disableForm = true)"
+            color="blue"
+          >
+            mdi-eye
+          </v-icon>
 
-          <v-icon small @click="deleteItem(item)" color="error"> mdi-delete </v-icon>
+          <v-icon small @click="deleteItem(item)" color="error">
+            mdi-delete
+          </v-icon>
         </template>
         <template v-slot:no-data> No data available </template>
       </v-data-table>
@@ -69,7 +82,7 @@ export default {
     return {
       addEmployeeDialog: false,
       openSearchDialog: false,
-      disableForm:false,
+      disableForm: false,
       snackbar: false,
       snackbarText: "",
       snackbarColor: "",
@@ -93,7 +106,9 @@ export default {
       return !this.filter?.search
         ? this.employees
         : this.employees.filter((emp) =>
-            emp[this.filter?.select].includes(this.filter?.search)
+            emp[this.filter?.select]
+              .toLowerCase()
+              .includes(this.filter?.search.toLowerCase())
           );
     },
   },
@@ -112,27 +127,27 @@ export default {
     },
     closeAddEmployeeDialog() {
       this.addEmployeeDialog = false;
-      this.disableForm=false
+      this.disableForm = false;
       this.employee = {};
       this.fetchEmployees();
     },
-     editItem(item) {
+    editItem(item) {
       this.employee = item;
       this.addEmployeeDialog = true;
     },
     async deleteItem(item) {
-    try {
-      await axios.delete(`/employees/${item.id}`);
-      this.fetchEmployees();
-      this.snackbarText = "Employee deleted successfully";
-      this.snackbarColor = "error";
-      this.snackbar = true;
-    } catch (error) {
-      this.snackbarText = "Failed to delete employee";
-      this.snackbarColor = "error";
-      this.snackbar = true;
-    }
-  },
+      try {
+        await axios.delete(`/employees/${item.id}`);
+        this.fetchEmployees();
+        this.snackbarText = "Employee deleted successfully";
+        this.snackbarColor = "error";
+        this.snackbar = true;
+      } catch (error) {
+        this.snackbarText = "Failed to delete employee";
+        this.snackbarColor = "error";
+        this.snackbar = true;
+      }
+    },
   },
   created() {
     this.fetchEmployees();
